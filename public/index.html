@@ -79,31 +79,99 @@ nav { background: var(--bg2); border-bottom: 2px solid var(--gold); padding: 0 1
 
 /* MATCH CARDS */
 .matches-grid { display: grid; gap: 12px; }
-.match-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; transition: border-color .2s; }
-.match-card.double { border-color: var(--gold); box-shadow: 0 0 16px rgba(245,158,11,.2); }
-.match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.match-num { font-size: 12px; color: var(--text2); }
-.match-date { font-size: 12px; color: var(--text2); }
-.match-venue { font-size: 11px; color: var(--text2); opacity: .7; }
-.match-teams { display: flex; align-items: center; gap: 12px; }
-.team-side { flex: 1; display: flex; align-items: center; gap: 10px; }
-.team-side.away { flex-direction: row-reverse; }
-.team-flag { font-size: 28px; }
-.team-name { font-size: 15px; font-weight: 600; }
-.team-name-ar { font-size: 12px; color: var(--text2); }
-.score-inputs { display: flex; align-items: center; gap: 8px; }
-.score-input { width: 52px; height: 52px; background: var(--bg2); border: 2px solid var(--border); border-radius: 8px; text-align: center; font-size: 22px; font-weight: 700; color: var(--text); outline: none; transition: border-color .2s; }
-.score-input:focus { border-color: var(--gold); }
-.score-sep { font-size: 20px; color: var(--text2); }
-.match-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
-.double-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; border: 1px solid var(--border); background: none; color: var(--text2); transition: all .2s; }
-.double-btn.active { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 600; }
-.double-btn:disabled { opacity: .4; cursor: not-allowed; }
-.result-badge { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+/* ── FIFA-style Match Card ── */
+.match-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.match-card.double { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,.25); }
+.match-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 14px;
+  background: rgba(255,255,255,.04);
+  border-bottom: 1px solid var(--border);
+}
+.match-num { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing:.5px; text-transform:uppercase; }
+.match-date { font-size: 11px; color: var(--text2); }
+.match-venue { font-size: 10px; color: var(--text2); opacity: .65; max-width:120px; text-align:right; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+
+/* Teams row */
+.match-teams {
+  display: flex; align-items: center;
+  padding: 18px 16px 10px;
+  gap: 8px;
+}
+.team-side {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 8px; text-align: center;
+}
+.team-flag-img {
+  width: 56px; height: 56px;
+  font-size: 48px; line-height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
+  transition: transform .2s;
+}
+.match-card:hover .team-flag-img { transform: scale(1.06); }
+.team-name { font-size: 13px; font-weight: 700; color: var(--text); line-height:1.2; }
+.team-code { font-size: 10px; color: var(--text2); font-weight: 600; letter-spacing:.5px; text-transform:uppercase; margin-top:2px; }
+
+/* Score area */
+.score-area {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  min-width: 110px;
+}
+.score-inputs { display: flex; align-items: center; gap: 6px; }
+.score-input {
+  width: 54px; height: 54px;
+  background: var(--bg2);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px; font-weight: 800;
+  color: var(--text); outline: none;
+  transition: border-color .2s, background .2s;
+  -moz-appearance: textfield;
+}
+.score-input::-webkit-outer-spin-button,
+.score-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.score-input:focus { border-color: var(--gold); background: rgba(245,158,11,.08); }
+.score-input[data-filled="true"] { border-color: rgba(245,158,11,.5); }
+.score-sep { font-size: 22px; font-weight: 800; color: var(--text2); }
+.score-static {
+  font-size: 26px; font-weight: 800; color: var(--text2); letter-spacing:2px;
+}
+.actual-result {
+  font-size: 11px; color: var(--text2);
+  background: rgba(255,255,255,.06);
+  padding: 3px 10px; border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* Footer */
+.match-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 14px 12px;
+}
+.double-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 20px; cursor: pointer;
+  font-size: 12px; font-weight: 700;
+  border: 1.5px solid var(--border);
+  background: none; color: var(--text2);
+  transition: all .2s; letter-spacing:.3px;
+}
+.double-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+.double-btn:disabled { opacity: .35; cursor: not-allowed; }
+.result-badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
 .result-exact { background: rgba(16,185,129,.2); color: var(--green); }
 .result-correct { background: rgba(245,158,11,.2); color: var(--gold); }
-.result-wrong { background: rgba(239,68,68,.2); color: var(--red); }
-.actual-score { font-size: 13px; color: var(--text2); }
+.result-wrong { background: rgba(239,68,68,.15); color: var(--red); }
+.actual-score { font-size: 12px; color: var(--text2); }
 
 /* SUBMIT BTN */
 .submit-section { position: sticky; bottom: 16px; text-align: center; margin-top: 20px; }
@@ -180,9 +248,11 @@ select.input-sm option { background: var(--bg2); }
 @media(max-width: 600px) {
   .nav-links { display: none; }
   .mobile-nav { display: flex; }
-  .team-name { font-size: 13px; }
-  .team-flag { font-size: 22px; }
-  .score-input { width: 44px; height: 44px; font-size: 18px; }
+  .team-name { font-size: 12px; }
+  .team-flag-img { font-size: 36px; width: 42px; height: 42px; }
+  .score-input { width: 46px; height: 46px; font-size: 20px; }
+  .score-area { min-width: 90px; }
+  .match-venue { display: none; }
   .hero h2 { font-size: 20px; }
   .lb-row { grid-template-columns: 40px 1fr auto; padding: 12px 14px; }
 }
@@ -734,10 +804,10 @@ function renderMatchCard(m, editable) {
   const pred = predictions[m.id] || { home: '', away: '', is_double: false };
   const isDouble = pred.is_double || (activeDouble === m.id);
   const finished = m.status === 'finished';
-  
+
   let resultBadge = '';
   if (finished && pred.home !== '' && m.home_score !== null) {
-    const exactScore = pred.home == m.home_score && pred.away == m.away_score;
+    const exactScore = parseInt(pred.home) === m.home_score && parseInt(pred.away) === m.away_score;
     const predResult = pred.home > pred.away ? 'H' : pred.home < pred.away ? 'A' : 'D';
     const actualResult = m.home_score > m.away_score ? 'H' : m.home_score < m.away_score ? 'A' : 'D';
     if (exactScore) resultBadge = `<span class="result-badge result-exact">✅ +${isDouble ? 6 : 3}</span>`;
@@ -745,39 +815,44 @@ function renderMatchCard(m, editable) {
     else resultBadge = `<span class="result-badge result-wrong">❌ 0</span>`;
   }
 
+  const homeVal = pred.home !== '' ? pred.home : '';
+  const awayVal = pred.away !== '' ? pred.away : '';
+
   const div = document.createElement('div');
   div.className = `match-card ${isDouble ? 'double' : ''}`;
   div.id = `mc-${m.id}`;
   div.innerHTML = `
     <div class="match-header">
-      <span class="match-num">ماتش ${m.match_number}</span>
+      <span class="match-num">م${m.match_number}</span>
       <span class="match-date">${m.match_date || ''}</span>
       <span class="match-venue">${m.venue || ''}</span>
     </div>
     <div class="match-teams">
       <div class="team-side">
-        <span class="team-flag">${m.home_flag || '🏳️'}</span>
-        <div>
-          <div class="team-name">${m.home_name_ar || m.home_name || ''}</div>
-        </div>
+        <div class="team-flag-img">${m.home_flag || '🏳️'}</div>
+        <div class="team-name">${m.home_name_ar || m.home_name || ''}</div>
       </div>
-      <div class="score-inputs">
+      <div class="score-area">
         ${editable ? `
-          <input type="number" class="score-input" id="h-${m.id}" value="${pred.home !== '' ? pred.home : ''}" min="0" max="20" placeholder="0" oninput="updatePred('${m.id}','home',this.value)">
-          <span class="score-sep">:</span>
-          <input type="number" class="score-input" id="a-${m.id}" value="${pred.away !== '' ? pred.away : ''}" min="0" max="20" placeholder="0" oninput="updatePred('${m.id}','away',this.value)">
-        ` : `
-          <div style="text-align:center">
-            <div style="font-size:20px;font-weight:700;color:var(--text2)">${pred.home !== '' ? pred.home : '-'} : ${pred.away !== '' ? pred.away : '-'}</div>
-            ${finished ? `<div class="actual-score" style="margin-top:4px">النتيجة: ${m.home_score} : ${m.away_score}</div>` : ''}
+          <div class="score-inputs">
+            <input type="number" class="score-input" id="h-${m.id}"
+              value="${homeVal}" min="0" max="20" placeholder="0"
+              data-filled="${homeVal !== ''}"
+              oninput="updatePred('${m.id}','home',this.value);this.dataset.filled=this.value!==''">
+            <span class="score-sep">-</span>
+            <input type="number" class="score-input" id="a-${m.id}"
+              value="${awayVal}" min="0" max="20" placeholder="0"
+              data-filled="${awayVal !== ''}"
+              oninput="updatePred('${m.id}','away',this.value);this.dataset.filled=this.value!==''">
           </div>
+        ` : `
+          <div class="score-static">${homeVal !== '' ? homeVal : '-'} : ${awayVal !== '' ? awayVal : '-'}</div>
+          ${finished ? `<div class="actual-result">⚽ ${m.home_score} - ${m.away_score}</div>` : ''}
         `}
       </div>
-      <div class="team-side away">
-        <span class="team-flag">${m.away_flag || '🏳️'}</span>
-        <div>
-          <div class="team-name">${m.away_name_ar || m.away_name || ''}</div>
-        </div>
+      <div class="team-side">
+        <div class="team-flag-img">${m.away_flag || '🏳️'}</div>
+        <div class="team-name">${m.away_name_ar || m.away_name || ''}</div>
       </div>
     </div>
     <div class="match-footer">
