@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>كأس العالم 2026 - التوقعات</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #060e1e;
+  --bg2: #0d1f3c;
+  --bg3: #132d52;
+  --card: #0f2444;
+  --border: #1e3a5f;
+  --gold: #f59e0b;
+  --gold2: #fbbf24;
+  --green: #10b981;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Arial, sans-serif; min-height: 100vh; }
+
+/* NAV */
+nav { background: var(--bg2); border-bottom: 2px solid var(--gold); padding: 0 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+.nav-inner { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.nav-brand { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; color: var(--gold); cursor: pointer; }
+.nav-brand span { font-size: 28px; }
+.nav-links { display: flex; gap: 4px; }
+.nav-link { padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 14px; color: var(--text2); transition: all .2s; white-space: nowrap; }
+.nav-link:hover, .nav-link.active { background: var(--bg3); color: var(--gold); }
+.nav-user { display: flex; align-items: center; gap: 10px; }
+.nav-user-name { font-size: 14px; color: var(--text2); }
+.btn-logout { background: none; border: 1px solid var(--border); color: var(--text2); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+.btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+.container { max-width: 1200px; margin: auto; padding: 24px 16px; }
+
+/* AUTH */
+.auth-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; background: radial-gradient(ellipse at top, #0d1f3c 0%, var(--bg) 70%); }
+.auth-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; width: 100%; max-width: 420px; box-shadow: var(--shadow); }
+.auth-logo { text-align: center; margin-bottom: 24px; }
+.auth-logo .trophy { font-size: 60px; }
+.auth-logo h1 { font-size: 22px; color: var(--gold); margin-top: 8px; }
+.auth-logo p { color: var(--text2); font-size: 14px; margin-top: 4px; }
+.auth-tabs { display: flex; background: var(--bg2); border-radius: 10px; padding: 4px; margin-bottom: 24px; }
+.auth-tab { flex: 1; text-align: center; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 14px; color: var(--text2); transition: all .2s; }
+.auth-tab.active { background: var(--gold); color: #000; font-weight: 700; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+.form-group input { width: 100%; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; color: var(--text); font-size: 15px; outline: none; transition: border-color .2s; }
+.form-group input:focus { border-color: var(--gold); }
+.btn-primary { width: 100%; background: var(--gold); color: #000; border: none; padding: 14px; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all .2s; }
+.btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.form-error { color: var(--red); font-size: 13px; margin-top: 8px; text-align: center; }
+.form-success { color: var(--green); font-size: 13px; margin-top: 8px; text-align: center; padding: 10px; background: rgba(16,185,129,.1); border-radius: 8px; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 24px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: '🏆'; position: absolute; font-size: 120px; opacity: .05; right: 20px; top: 50%; transform: translateY(-50%); }
+.hero h2 { font-size: 28px; color: var(--gold); }
+.hero p { color: var(--text2); margin-top: 8px; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 20px; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+.stat-card .num { font-size: 32px; font-weight: 700; color: var(--gold); }
+.stat-card .label { font-size: 12px; color: var(--text2); margin-top: 4px; }
+
+/* ROUNDS */
+.rounds-tabs { display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px; }
+.round-tab { padding: 10px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all .2s; }
+.round-tab:hover, .round-tab.active { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 600; }
+
+/* MATCH CARDS */
+.matches-grid { display: grid; gap: 12px; }
+.match-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; transition: border-color .2s; }
+.match-card.double { border-color: var(--gold); box-shadow: 0 0 16px rgba(245,158,11,.2); }
+.match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.match-num { font-size: 12px; color: var(--text2); }
+.match-date { font-size: 12px; color: var(--text2); }
+.match-venue { font-size: 11px; color: var(--text2); opacity: .7; }
+.match-teams { display: flex; align-items: center; gap: 12px; }
+.team-side { flex: 1; display: flex; align-items: center; gap: 10px; }
+.team-side.away { flex-direction: row-reverse; }
+.team-flag { font-size: 28px; }
+.team-name { font-size: 15px; font-weight: 600; }
+.team-name-ar { font-size: 12px; color: var(--text2); }
+.score-inputs { display: flex; align-items: center; gap: 8px; }
+.score-input { width: 52px; height: 52px; background: var(--bg2); border: 2px solid var(--border); border-radius: 8px; text-align: center; font-size: 22px; font-weight: 700; color: var(--text); outline: none; transition: border-color .2s; }
+.score-input:focus { border-color: var(--gold); }
+.score-sep { font-size: 20px; color: var(--text2); }
+.match-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.double-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; border: 1px solid var(--border); background: none; color: var(--text2); transition: all .2s; }
+.double-btn.active { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 600; }
+.double-btn:disabled { opacity: .4; cursor: not-allowed; }
+.result-badge { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.result-exact { background: rgba(16,185,129,.2); color: var(--green); }
+.result-correct { background: rgba(245,158,11,.2); color: var(--gold); }
+.result-wrong { background: rgba(239,68,68,.2); color: var(--red); }
+.actual-score { font-size: 13px; color: var(--text2); }
+
+/* SUBMIT BTN */
+.submit-section { position: sticky; bottom: 16px; text-align: center; margin-top: 20px; }
+.btn-submit { background: var(--gold); color: #000; border: none; padding: 16px 48px; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(245,158,11,.4); transition: all .2s; }
+.btn-submit:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,158,11,.5); }
+.btn-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* LEADERBOARD */
+.lb-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.lb-header { background: var(--bg3); padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.lb-header h3 { font-size: 18px; }
+.lb-row { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--border); transition: background .15s; gap: 12px; }
+.lb-row:hover { background: var(--bg2); }
+.lb-row.me { background: rgba(245,158,11,.08); border-left: 3px solid var(--gold); }
+.lb-rank { font-size: 20px; font-weight: 700; text-align: center; }
+.rank-1 { color: #ffd700; }
+.rank-2 { color: #c0c0c0; }
+.rank-3 { color: #cd7f32; }
+.lb-name { font-size: 15px; font-weight: 600; }
+.lb-sub { font-size: 12px; color: var(--text2); margin-top: 2px; }
+.lb-pts { font-size: 24px; font-weight: 700; color: var(--gold); text-align: right; }
+.lb-pts-label { font-size: 11px; color: var(--text2); text-align: right; }
+
+/* LEAGUES */
+.league-actions { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.btn-secondary { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 12px 20px; border-radius: 10px; cursor: pointer; font-size: 14px; transition: all .2s; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.league-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; cursor: pointer; transition: all .2s; }
+.league-card:hover { border-color: var(--gold); transform: translateX(-4px); }
+.league-name { font-size: 18px; font-weight: 700; }
+.league-code { display: inline-flex; align-items: center; gap: 6px; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 4px 12px; font-size: 14px; font-weight: 700; color: var(--gold); margin-top: 8px; cursor: pointer; }
+.league-meta { font-size: 13px; color: var(--text2); margin-top: 8px; }
+
+/* MODAL */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.modal { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; }
+.modal h3 { font-size: 20px; margin-bottom: 20px; color: var(--gold); }
+.modal-footer { display: flex; gap: 12px; margin-top: 20px; }
+.btn-cancel { flex: 1; background: var(--bg2); border: 1px solid var(--border); color: var(--text); padding: 12px; border-radius: 8px; cursor: pointer; }
+
+/* PREQUAL SECTION */
+.prequal-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
+.prequal-card h3 { font-size: 18px; margin-bottom: 6px; color: var(--gold); }
+.prequal-card p { font-size: 13px; color: var(--text2); margin-bottom: 16px; }
+.teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.team-pick { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--bg2); border: 2px solid var(--border); border-radius: 8px; cursor: pointer; transition: all .2s; }
+.team-pick:hover { border-color: var(--gold); }
+.team-pick.selected { border-color: var(--gold); background: rgba(245,158,11,.1); }
+.team-pick .tflag { font-size: 22px; }
+.team-pick .tname { font-size: 13px; font-weight: 600; }
+
+/* TOAST */
+.toast-wrap { position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 500; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+.toast { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 14px; box-shadow: var(--shadow); animation: slideIn .3s ease; white-space: nowrap; }
+.toast.success { border-color: var(--green); color: var(--green); }
+.toast.error { border-color: var(--red); color: var(--red); }
+.toast.info { border-color: var(--gold); color: var(--gold); }
+@keyframes slideIn { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
+
+/* SCORING INFO */
+.scoring-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.score-rule { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; display: flex; align-items: center; gap: 12px; }
+.score-rule .pts { font-size: 28px; font-weight: 700; color: var(--gold); min-width: 50px; text-align: center; }
+.score-rule .desc { font-size: 13px; color: var(--text2); }
+
+/* ADMIN */
+.admin-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
+.admin-section h3 { margin-bottom: 16px; color: var(--gold); }
+.match-result-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.input-sm { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 14px; outline: none; }
+select.input-sm option { background: var(--bg2); }
+
+/* RESPONSIVE */
+@media(max-width: 600px) {
+  .nav-links { display: none; }
+  .mobile-nav { display: flex; }
+  .team-name { font-size: 13px; }
+  .team-flag { font-size: 22px; }
+  .score-input { width: 44px; height: 44px; font-size: 18px; }
+  .hero h2 { font-size: 20px; }
+  .lb-row { grid-template-columns: 40px 1fr auto; padding: 12px 14px; }
+}
+.mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg2); border-top: 1px solid var(--border); z-index: 100; }
+.mobile-nav-items { display: flex; }
+.mobile-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px 4px; cursor: pointer; color: var(--text2); font-size: 11px; gap: 4px; transition: color .2s; }
+.mobile-nav-item.active, .mobile-nav-item:hover { color: var(--gold); }
+.mobile-nav-item .icon { font-size: 20px; }
+@media(max-width: 600px) {
+  .mobile-nav { display: flex; }
+  body { padding-bottom: 70px; }
+}
+.loading { text-align: center; padding: 40px; color: var(--text2); }
+.spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 12px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text2); }
+.empty-state .icon { font-size: 60px; margin-bottom: 16px; }
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.badge-gold { background: rgba(245,158,11,.2); color: var(--gold); }
+.badge-green { background: rgba(16,185,129,.2); color: var(--green); }
+.badge-blue { background: rgba(59,130,246,.2); color: var(--blue); }
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- NAV -->
+<nav id="mainNav" style="display:none">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="navigate('home')">
+      <span>🏆</span> كأس العالم 2026
+    </div>
+    <div class="nav-links">
+      <div class="nav-link" data-page="home" onclick="navigate('home')">🏠 الرئيسية</div>
+      <div class="nav-link" data-page="predict" onclick="navigate('predict')">⚽ التوقعات</div>
+      <div class="nav-link" data-page="leaderboard" onclick="navigate('leaderboard')">🏅 الترتيب</div>
+      <div class="nav-link" data-page="leagues" onclick="navigate('leagues')">👥 الليجات</div>
+      <div class="nav-link" data-page="admin" onclick="navigate('admin')" id="adminNavLink" style="display:none">⚙️ الإدارة</div>
+    </div>
+    <div class="nav-user">
+      <span class="nav-user-name" id="navUserName"></span>
+      <button class="btn-logout" onclick="logout()">خروج</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav" style="display:none">
+  <div class="mobile-nav-items">
+    <div class="mobile-nav-item" data-page="home" onclick="navigate('home')"><span class="icon">🏠</span>الرئيسية</div>
+    <div class="mobile-nav-item" data-page="predict" onclick="navigate('predict')"><span class="icon">⚽</span>التوقعات</div>
+    <div class="mobile-nav-item" data-page="leaderboard" onclick="navigate('leaderboard')"><span class="icon">🏅</span>الترتيب</div>
+    <div class="mobile-nav-item" data-page="leagues" onclick="navigate('leagues')"><span class="icon">👥</span>الليجات</div>
+  </div>
+</div>
+
+<!-- AUTH PAGE -->
+<div id="page-auth">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="trophy">🏆</div>
+        <h1>كأس العالم 2026</h1>
+        <p>توقع وتنافس مع أصحابك</p>
+      </div>
+      <div class="auth-tabs">
+        <div class="auth-tab active" onclick="switchAuthTab('login')" id="tab-login">تسجيل الدخول</div>
+        <div class="auth-tab" onclick="switchAuthTab('signup')" id="tab-signup">حساب جديد</div>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="form-login">
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" id="loginEmail" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+        </div>
+        <div class="form-group">
+          <label>كلمة المرور</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+        </div>
+        <div id="loginError" class="form-error" style="display:none"></div>
+        <div id="loginMsg" class="form-success" style="display:none"></div>
+        <button class="btn-primary" onclick="doLogin()" id="loginBtn">دخول 🚀</button>
+        <div id="resendSection" style="display:none;margin-top:12px;text-align:center">
+          <button style="background:none;border:none;color:var(--gold);cursor:pointer;font-size:13px" onclick="resendActivation()">إعادة إرسال رابط التفعيل</button>
+        </div>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="form-signup" style="display:none">
+        <div class="form-group">
+          <label>الاسم</label>
+          <input type="text" id="signupName" placeholder="اسمك الكامل">
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" id="signupEmail" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>كلمة المرور</label>
+          <input type="password" id="signupPassword" placeholder="٨ أحرف على الأقل" onkeydown="if(event.key==='Enter')doSignup()">
+        </div>
+        <div id="signupError" class="form-error" style="display:none"></div>
+        <div id="signupMsg" class="form-success" style="display:none"></div>
+        <button class="btn-primary" onclick="doSignup()" id="signupBtn">إنشاء حساب ✨</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page">
+  <div class="container">
+    <div class="hero">
+      <h2>🏆 مرحباً، <span id="heroName"></span>!</h2>
+      <p>كأس العالم 2026 - الولايات المتحدة، كندا، المكسيك</p>
+      <div class="stats-grid" id="homeStats"></div>
+    </div>
+
+    <div class="scoring-info">
+      <div class="score-rule"><div class="pts">3️⃣</div><div class="desc">توقع النتيجة بالضبط</div></div>
+      <div class="score-rule"><div class="pts">1️⃣</div><div class="desc">توقع نتيجة الماتش صح (فوز/تعادل)</div></div>
+      <div class="score-rule"><div class="pts">0️⃣</div><div class="desc">توقع غلط خالص</div></div>
+      <div class="score-rule"><div class="pts">×2</div><div class="desc">دوبل = ضعف نقاط الماتش</div></div>
+      <div class="score-rule"><div class="pts">15</div><div class="desc">توقع بطل كأس العالم ✅</div></div>
+      <div class="score-rule"><div class="pts">+10</div><div class="desc">توقع ال٨ الكبار بشكل صحيح</div></div>
+    </div>
+
+    <div class="prequal-card" id="prequal-section">
+      <h3>⚽ التوقعات قبل البطولة</h3>
+      <p>هذه التوقعات تُقدَّم مرة واحدة فقط قبل بداية كأس العالم</p>
+      <div id="prequal-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PREDICT PAGE -->
+<div id="page-predict" class="page">
+  <div class="container">
+    <h2 style="margin-bottom:16px">⚽ التوقعات</h2>
+    <div class="rounds-tabs" id="roundTabs"></div>
+    <div id="roundInfo" style="margin-bottom:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center"></div>
+    <div id="matchesContainer"></div>
+    <div class="submit-section" id="submitSection" style="display:none">
+      <button class="btn-submit" onclick="submitPredictions()" id="submitBtn">💾 حفظ التوقعات</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERBOARD PAGE -->
+<div id="page-leaderboard" class="page">
+  <div class="container">
+    <h2 style="margin-bottom:16px">🏅 ترتيب المتسابقين</h2>
+    <div class="rounds-tabs" id="lbTabs">
+      <div class="round-tab active" onclick="loadLeaderboard(null)" data-round="">إجمالي</div>
+    </div>
+    <div id="leaderboardContent"></div>
+  </div>
+</div>
+
+<!-- LEAGUES PAGE -->
+<div id="page-leagues" class="page">
+  <div class="container">
+    <h2 style="margin-bottom:16px">👥 الليجات</h2>
+    <div class="league-actions">
+      <button class="btn-secondary" onclick="showCreateLeague()">➕ إنشاء ليجا</button>
+      <button class="btn-secondary" onclick="showJoinLeague()">🔗 انضم بكود</button>
+    </div>
+    <div id="leaguesContent"></div>
+  </div>
+</div>
+
+<!-- ADMIN PAGE -->
+<div id="page-admin" class="page">
+  <div class="container">
+    <h2 style="margin-bottom:16px">⚙️ لوحة الإدارة</h2>
+    <div class="admin-section">
+      <h3>📊 تحديث نتيجة ماتش</h3>
+      <div class="match-result-form">
+        <div>
+          <label style="font-size:13px;color:var(--text2);display:block;margin-bottom:4px">اختر الماتش</label>
+          <select class="input-sm" id="adminMatchSelect" style="min-width:280px"></select>
+        </div>
+        <div>
+          <label style="font-size:13px;color:var(--text2);display:block;margin-bottom:4px">نتيجة الفريق الأول</label>
+          <input type="number" class="input-sm" id="adminHomeScore" min="0" max="20" value="0" style="width:80px">
+        </div>
+        <div>
+          <label style="font-size:13px;color:var(--text2);display:block;margin-bottom:4px">نتيجة الفريق الثاني</label>
+          <input type="number" class="input-sm" id="adminAwayScore" min="0" max="20" value="0" style="width:80px">
+        </div>
+        <button class="btn-primary" style="width:auto;padding:12px 24px" onclick="adminUpdateResult()">✅ تحديث وحساب النقاط</button>
+      </div>
+    </div>
+    <div class="admin-section">
+      <h3>🏆 تحديد بطل كأس العالم</h3>
+      <div class="match-result-form">
+        <select class="input-sm" id="adminChampionTeam" style="min-width:200px"></select>
+        <button class="btn-primary" style="width:auto;padding:12px 24px" onclick="adminSetChampion()">🏆 تحديد البطل</button>
+      </div>
+    </div>
+    <div class="admin-section">
+      <h3>🎯 نتائج ترقية الجولة (تغيير حالة)</h3>
+      <div class="match-result-form">
+        <select class="input-sm" id="adminMatchStatus"></select>
+        <select class="input-sm" id="adminStatusValue">
+          <option value="scheduled">scheduled - قادم</option>
+          <option value="live">live - يلعب الآن</option>
+          <option value="finished">finished - انتهى</option>
+        </select>
+        <button class="btn-primary" style="width:auto;padding:12px 24px" onclick="adminUpdateStatus()">تحديث الحالة</button>
+      </div>
+    </div>
+    <div class="admin-section">
+      <h3>👤 المستخدمون</h3>
+      <div id="adminUsers"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div id="modal" class="modal-overlay" style="display:none">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+// ─── STATE ──────────────────────────────────────────────────────────────────
+const API = '';
+let currentUser = null;
+let currentPage = 'home';
+let currentRound = 1;
+let allMatches = [];
+let allTeams = [];
+let predictions = {}; // match_id -> {home, away, is_double}
+let activeDouble = null;
+let hasChampionPred = false;
+let hasTop8Pred = false;
+let selectedChampion = null;
+let selectedTop8 = [];
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+window.onload = () => {
+  const token = localStorage.getItem('wc2026_token');
+  const user = localStorage.getItem('wc2026_user');
+  if (token && user) {
+    currentUser = JSON.parse(user);
+    showApp();
+  } else {
+    document.getElementById('page-auth').style.display = '';
+  }
+  if (window.location.search.includes('activated=1')) {
+    document.getElementById('page-auth').style.display = '';
+    showToast('✅ تم تفعيل حسابك! يمكنك الدخول الآن', 'success');
+  }
+};
+
+// ─── AUTH ───────────────────────────────────────────────────────────────────
+function switchAuthTab(tab) {
+  document.getElementById('tab-login').classList.toggle('active', tab==='login');
+  document.getElementById('tab-signup').classList.toggle('active', tab==='signup');
+  document.getElementById('form-login').style.display = tab==='login' ? '' : 'none';
+  document.getElementById('form-signup').style.display = tab==='signup' ? '' : 'none';
+}
+
+async function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
+  errEl.style.display = 'none';
+  document.getElementById('resendSection').style.display = 'none';
+  if (!email || !password) { showErr(errEl, 'ادخل البريد وكلمة المرور'); return; }
+  btn.disabled = true; btn.textContent = 'جاري الدخول...';
+  try {
+    const r = await api('/api/auth/login', 'POST', { email, password });
+    localStorage.setItem('wc2026_token', r.token);
+    localStorage.setItem('wc2026_user', JSON.stringify(r.user));
+    currentUser = r.user;
+    showApp();
+  } catch(e) {
+    showErr(errEl, e.message);
+    if (e.need_activation) document.getElementById('resendSection').style.display = 'block';
+  } finally { btn.disabled = false; btn.textContent = 'دخول 🚀'; }
+}
+
+async function doSignup() {
+  const name = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPassword').value;
+  const errEl = document.getElementById('signupError');
+  const msgEl = document.getElementById('signupMsg');
+  const btn = document.getElementById('signupBtn');
+  errEl.style.display = 'none'; msgEl.style.display = 'none';
+  if (!name || !email || !password) { showErr(errEl, 'جميع الحقول مطلوبة'); return; }
+  if (password.length < 6) { showErr(errEl, 'كلمة المرور ٦ أحرف على الأقل'); return; }
+  btn.disabled = true; btn.textContent = 'جاري الإنشاء...';
+  try {
+    const r = await api('/api/auth/signup', 'POST', { name, email, password });
+    msgEl.style.display = '';
+    msgEl.textContent = r.message;
+    // In demo mode, show activation link
+    if (r.demo_token) {
+      msgEl.innerHTML += `<br><small style="color:var(--text2)">Demo: <a href="/api/auth/activate/${r.demo_token}" style="color:var(--gold)">تفعيل مباشر</a></small>`;
+    }
+  } catch(e) { showErr(errEl, e.message); }
+  finally { btn.disabled = false; btn.textContent = 'إنشاء حساب ✨'; }
+}
+
+async function resendActivation() {
+  const email = document.getElementById('loginEmail').value.trim();
+  if (!email) { showToast('ادخل البريد الإلكتروني أولاً', 'error'); return; }
+  try {
+    const r = await api('/api/auth/resend-activation', 'POST', { email });
+    showToast(r.message, 'success');
+    if (r.demo_token) showToast(`Demo activation: /api/auth/activate/${r.demo_token}`, 'info');
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+function logout() {
+  localStorage.removeItem('wc2026_token');
+  localStorage.removeItem('wc2026_user');
+  currentUser = null;
+  document.getElementById('page-auth').style.display = '';
+  document.getElementById('mainNav').style.display = 'none';
+  document.getElementById('mobileNav').style.display = 'none';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+}
+
+// ─── APP INIT ────────────────────────────────────────────────────────────────
+async function showApp() {
+  document.getElementById('page-auth').style.display = 'none';
+  document.getElementById('mainNav').style.display = '';
+  document.getElementById('mobileNav').style.display = 'flex';
+  document.getElementById('navUserName').textContent = currentUser.name;
+  if (currentUser.is_admin) document.getElementById('adminNavLink').style.display = '';
+  await loadInitialData();
+  navigate('home');
+}
+
+async function loadInitialData() {
+  try {
+    allTeams = await api('/api/teams');
+    allMatches = await api('/api/matches');
+  } catch(e) { console.error(e); }
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+function navigate(page) {
+  currentPage = page;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('[data-page]').forEach(el => {
+    el.classList.toggle('active', el.dataset.page === page);
+  });
+  document.getElementById(`page-${page}`)?.classList.add('active');
+
+  if (page === 'home') loadHome();
+  else if (page === 'predict') loadPredict();
+  else if (page === 'leaderboard') loadLeaderboard(null);
+  else if (page === 'leagues') loadLeagues();
+  else if (page === 'admin') loadAdmin();
+}
+
+// ─── HOME ────────────────────────────────────────────────────────────────────
+async function loadHome() {
+  document.getElementById('heroName').textContent = currentUser.name;
+  try {
+    const stats = await api('/api/stats');
+    const statsEl = document.getElementById('homeStats');
+    statsEl.innerHTML = `
+      <div class="stat-card"><div class="num">${stats.rank || '-'}</div><div class="label">ترتيبك العام</div></div>
+      <div class="stat-card"><div class="num">${stats.overall?.total_points || 0}</div><div class="label">نقاطك الكلية</div></div>
+      <div class="stat-card"><div class="num">${stats.overall?.exact_total || 0}</div><div class="label">توقعات صح تماماً</div></div>
+      <div class="stat-card"><div class="num">${stats.total_users || 0}</div><div class="label">عدد المتسابقين</div></div>
+    `;
+  } catch(e) {}
+
+  // Load prequal
+  try {
+    const myPreds = await api('/api/predictions/my');
+    hasChampionPred = !!myPreds.champion;
+    hasTop8Pred = myPreds.top8?.length > 0;
+    renderPrequalSection(myPreds);
+  } catch(e) {}
+}
+
+function renderPrequalSection(myPreds) {
+  const el = document.getElementById('prequal-content');
+  const sectionEl = document.getElementById('prequal-section');
+  
+  if (hasChampionPred && hasTop8Pred) {
+    sectionEl.style.borderColor = 'var(--green)';
+    el.innerHTML = `
+      <div class="badge badge-green" style="margin-bottom:8px">✅ تم تقديم توقعاتك قبل البطولة</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+        <div style="background:var(--bg2);border-radius:8px;padding:12px 16px">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">🏆 البطل المتوقع</div>
+          <div style="font-size:16px;font-weight:700">${myPreds.champion?.flag || ''} ${myPreds.champion?.name || ''}</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:12px 16px">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:8px">⭐ الثمانية الكبار</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            ${myPreds.top8.map(t => `<span class="badge badge-gold">${t.flag} ${t.name}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Show form
+  el.innerHTML = `
+    <div style="margin-bottom:20px">
+      <div style="font-size:15px;font-weight:700;margin-bottom:12px;color:var(--gold)">🏆 من سيفوز بكأس العالم 2026؟ (+15 نقطة)</div>
+      <div class="teams-grid" id="championGrid"></div>
+    </div>
+    <hr class="divider">
+    <div style="margin-top:16px">
+      <div style="font-size:15px;font-weight:700;margin-bottom:4px;color:var(--gold)">⭐ اختر 8 منتخبات ستصعد أفضل التوالت</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:12px">6 صح = +5 نقاط إضافية | 7 صح = +5 | 8 صح = +10 نقاط إضافية</div>
+      <div style="font-size:13px;color:var(--gold);margin-bottom:12px" id="top8Counter">تم اختيار 0 من 8</div>
+      <div class="teams-grid" id="top8Grid"></div>
+    </div>
+    <div style="margin-top:20px">
+      <button class="btn-primary" onclick="submitPrequal()" id="prequal-btn">حفظ التوقعات قبل البطولة ✨</button>
+    </div>
+  `;
+
+  renderTeamPicker('championGrid', allTeams, 1, 'champion');
+  renderTeamPicker('top8Grid', allTeams, 8, 'top8');
+}
+
+function renderTeamPicker(containerId, teams, max, type) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = teams.map(t => `
+    <div class="team-pick" data-id="${t.id}" data-type="${type}" onclick="toggleTeamPick('${t.id}','${type}',${max})">
+      <span class="tflag">${t.flag}</span>
+      <span class="tname">${t.name_ar}</span>
+    </div>
+  `).join('');
+}
+
+function toggleTeamPick(id, type, max) {
+  if (type === 'champion') {
+    document.querySelectorAll('[data-type="champion"]').forEach(el => el.classList.remove('selected'));
+    document.querySelector(`[data-id="${id}"][data-type="champion"]`).classList.add('selected');
+    selectedChampion = id;
+  } else {
+    const el = document.querySelector(`[data-id="${id}"][data-type="top8"]`);
+    if (el.classList.contains('selected')) {
+      el.classList.remove('selected');
+      selectedTop8 = selectedTop8.filter(x => x !== id);
+    } else if (selectedTop8.length < max) {
+      el.classList.add('selected');
+      selectedTop8.push(id);
+    } else {
+      showToast(`يمكنك اختيار ${max} منتخبات فقط`, 'error');
+    }
+    document.getElementById('top8Counter').textContent = `تم اختيار ${selectedTop8.length} من 8`;
+  }
+}
+
+async function submitPrequal() {
+  if (!selectedChampion) { showToast('اختر البطل المتوقع', 'error'); return; }
+  if (selectedTop8.length < 8) { showToast(`اختر 8 منتخبات (اخترت ${selectedTop8.length})`, 'error'); return; }
+  const btn = document.getElementById('prequal-btn');
+  btn.disabled = true; btn.textContent = 'جاري الحفظ...';
+  try {
+    await api('/api/predictions', 'POST', { champion_team_id: selectedChampion, top8_team_ids: selectedTop8 });
+    showToast('✅ تم حفظ توقعاتك قبل البطولة!', 'success');
+    hasChampionPred = true; hasTop8Pred = true;
+    loadHome();
+  } catch(e) { showToast(e.message, 'error'); }
+  finally { btn.disabled = false; btn.textContent = 'حفظ التوقعات قبل البطولة ✨'; }
+}
+
+// ─── PREDICT ─────────────────────────────────────────────────────────────────
+async function loadPredict() {
+  const rounds = [...new Set(allMatches.map(m => m.round))].sort();
+  const tabsEl = document.getElementById('roundTabs');
+  tabsEl.innerHTML = rounds.map(r => {
+    const name = allMatches.find(m => m.round === r)?.round_name || `جولة ${r}`;
+    return `<div class="round-tab ${r === currentRound ? 'active' : ''}" onclick="selectRound(${r})">${name}</div>`;
+  }).join('');
+  await loadRoundMatches(currentRound);
+}
+
+async function selectRound(round) {
+  currentRound = round;
+  document.querySelectorAll('#roundTabs .round-tab').forEach((el, i) => {
+    const rounds = [...new Set(allMatches.map(m => m.round))].sort();
+    el.classList.toggle('active', rounds[i] === round);
+  });
+  await loadRoundMatches(round);
+}
+
+async function loadRoundMatches(round) {
+  const container = document.getElementById('matchesContainer');
+  container.innerHTML = '<div class="loading"><div class="spinner"></div><br>جاري التحميل...</div>';
+  
+  try {
+    const [matches, myPreds] = await Promise.all([
+      api(`/api/matches?round=${round}`),
+      api(`/api/predictions/my?round=${round}`)
+    ]);
+
+    // Build predictions map from saved data
+    const savedPreds = {};
+    myPreds.predictions.forEach(p => {
+      savedPreds[p.match_id] = { home: p.home_score, away: p.away_score, is_double: p.is_double };
+      if (p.is_double) activeDouble = p.match_id;
+    });
+
+    // Merge into predictions state
+    matches.forEach(m => {
+      if (savedPreds[m.id]) {
+        predictions[m.id] = savedPreds[m.id];
+      } else if (!predictions[m.id]) {
+        predictions[m.id] = { home: '', away: '', is_double: false };
+      }
+    });
+
+    const allScheduled = matches.every(m => m.status === 'scheduled');
+    const allFinished = matches.every(m => m.status === 'finished');
+    const hasPreds = myPreds.predictions.length > 0;
+
+    // Info bar
+    const infoEl = document.getElementById('roundInfo');
+    if (hasPreds) {
+      infoEl.innerHTML = `<span class="badge badge-green">✅ تم تقديم توقعاتك لهذه الجولة</span>`;
+      if (!allScheduled) infoEl.innerHTML += `<span style="font-size:13px;color:var(--text2)">لا يمكن التعديل بعد بداية الجولة</span>`;
+    }
+
+    container.innerHTML = '';
+    matches.forEach(m => {
+      container.appendChild(renderMatchCard(m, allScheduled && !allFinished));
+    });
+
+    document.getElementById('submitSection').style.display = allScheduled ? '' : 'none';
+  } catch(e) {
+    container.innerHTML = `<div class="empty-state"><div class="icon">😕</div><p>${e.message}</p></div>`;
+  }
+}
+
+function renderMatchCard(m, editable) {
+  const pred = predictions[m.id] || { home: '', away: '', is_double: false };
+  const isDouble = pred.is_double || (activeDouble === m.id);
+  const finished = m.status === 'finished';
+  
+  let resultBadge = '';
+  if (finished && pred.home !== '' && m.home_score !== null) {
+    const exactScore = pred.home == m.home_score && pred.away == m.away_score;
+    const predResult = pred.home > pred.away ? 'H' : pred.home < pred.away ? 'A' : 'D';
+    const actualResult = m.home_score > m.away_score ? 'H' : m.home_score < m.away_score ? 'A' : 'D';
+    if (exactScore) resultBadge = `<span class="result-badge result-exact">✅ +${isDouble ? 6 : 3}</span>`;
+    else if (predResult === actualResult) resultBadge = `<span class="result-badge result-correct">👍 +${isDouble ? 2 : 1}</span>`;
+    else resultBadge = `<span class="result-badge result-wrong">❌ 0</span>`;
+  }
+
+  const div = document.createElement('div');
+  div.className = `match-card ${isDouble ? 'double' : ''}`;
+  div.id = `mc-${m.id}`;
+  div.innerHTML = `
+    <div class="match-header">
+      <span class="match-num">ماتش ${m.match_number}</span>
+      <span class="match-date">${m.match_date || ''}</span>
+      <span class="match-venue">${m.venue || ''}</span>
+    </div>
+    <div class="match-teams">
+      <div class="team-side">
+        <span class="team-flag">${m.home_flag || '🏳️'}</span>
+        <div>
+          <div class="team-name">${m.home_name_ar || m.home_name || ''}</div>
+        </div>
+      </div>
+      <div class="score-inputs">
+        ${editable ? `
+          <input type="number" class="score-input" id="h-${m.id}" value="${pred.home !== '' ? pred.home : ''}" min="0" max="20" placeholder="0" oninput="updatePred('${m.id}','home',this.value)">
+          <span class="score-sep">:</span>
+          <input type="number" class="score-input" id="a-${m.id}" value="${pred.away !== '' ? pred.away : ''}" min="0" max="20" placeholder="0" oninput="updatePred('${m.id}','away',this.value)">
+        ` : `
+          <div style="text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--text2)">${pred.home !== '' ? pred.home : '-'} : ${pred.away !== '' ? pred.away : '-'}</div>
+            ${finished ? `<div class="actual-score" style="margin-top:4px">النتيجة: ${m.home_score} : ${m.away_score}</div>` : ''}
+          </div>
+        `}
+      </div>
+      <div class="team-side away">
+        <span class="team-flag">${m.away_flag || '🏳️'}</span>
+        <div>
+          <div class="team-name">${m.away_name_ar || m.away_name || ''}</div>
+        </div>
+      </div>
+    </div>
+    <div class="match-footer">
+      ${editable ? `
+        <button class="double-btn ${isDouble ? 'active' : ''}" onclick="toggleDouble('${m.id}')" id="db-${m.id}">
+          ×2 دوبل
+        </button>
+      ` : `<div class="double-btn ${isDouble ? 'active' : ''}">×2 دوبل</div>`}
+      ${resultBadge}
+    </div>
+  `;
+  return div;
+}
+
+function updatePred(matchId, side, val) {
+  if (!predictions[matchId]) predictions[matchId] = { home: '', away: '', is_double: false };
+  predictions[matchId][side] = val === '' ? '' : parseInt(val);
+}
+
+function toggleDouble(matchId) {
+  if (activeDouble && activeDouble !== matchId) {
+    // Remove from previous
+    const prev = document.getElementById(`mc-${activeDouble}`);
+    if (prev) prev.classList.remove('double');
+    const prevBtn = document.getElementById(`db-${activeDouble}`);
+    if (prevBtn) prevBtn.classList.remove('active');
+    predictions[activeDouble].is_double = false;
+    activeDouble = null;
+  }
+  
+  if (activeDouble === matchId) {
+    predictions[matchId].is_double = false;
+    activeDouble = null;
+    document.getElementById(`mc-${matchId}`)?.classList.remove('double');
+    document.getElementById(`db-${matchId}`)?.classList.remove('active');
+  } else {
+    predictions[matchId] = predictions[matchId] || { home: '', away: '', is_double: false };
+    predictions[matchId].is_double = true;
+    activeDouble = matchId;
+    document.getElementById(`mc-${matchId}`)?.classList.add('double');
+    document.getElementById(`db-${matchId}`)?.classList.add('active');
+  }
+}
+
+async function submitPredictions() {
+  const roundMatches = allMatches.filter(m => m.round === currentRound);
+  const preds = roundMatches.map(m => {
+    const p = predictions[m.id];
+    return { match_id: m.id, home_score: parseInt(p?.home) || 0, away_score: parseInt(p?.away) || 0, is_double: !!p?.is_double };
+  });
+
+  // Validate all filled
+  const unfilled = preds.filter(p => p.home_score === undefined || isNaN(p.home_score));
+  
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'جاري الحفظ...';
+  try {
+    await api('/api/predictions', 'POST', { predictions: preds });
+    showToast('✅ تم حفظ توقعاتك!', 'success');
+    loadRoundMatches(currentRound);
+  } catch(e) { showToast(e.message, 'error'); }
+  finally { btn.disabled = false; btn.textContent = '💾 حفظ التوقعات'; }
+}
+
+// ─── LEADERBOARD ─────────────────────────────────────────────────────────────
+async function loadLeaderboard(round) {
+  // Add round tabs
+  const tabsEl = document.getElementById('lbTabs');
+  const rounds = [...new Set(allMatches.map(m => m.round))].sort();
+  tabsEl.innerHTML = `<div class="round-tab ${!round ? 'active' : ''}" onclick="loadLeaderboard(null)" data-round="">إجمالي</div>`;
+  rounds.forEach(r => {
+    const name = allMatches.find(m => m.round === r)?.round_name || `جولة ${r}`;
+    tabsEl.innerHTML += `<div class="round-tab ${round == r ? 'active' : ''}" onclick="loadLeaderboard(${r})" data-round="${r}">${name}</div>`;
+  });
+
+  const el = document.getElementById('leaderboardContent');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><br>جاري التحميل...</div>';
+  try {
+    const url = round ? `/api/leaderboard?round=${round}` : '/api/leaderboard';
+    const data = await api(url);
+    if (!data.length) {
+      el.innerHTML = '<div class="empty-state"><div class="icon">🏅</div><p>لا يوجد نقاط بعد. ابدأ بالتوقع!</p></div>';
+      return;
+    }
+    el.innerHTML = `
+      <div class="lb-card">
+        <div class="lb-header"><span>🏅</span><h3>${round ? `نقاط الجولة ${round}` : 'الترتيب العام'}</h3></div>
+        ${data.map((u, i) => {
+          const rank = i + 1;
+          const isMe = u.id === currentUser.id;
+          const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+          return `
+            <div class="lb-row ${isMe ? 'me' : ''}">
+              <div class="lb-rank ${rank<=3 ? 'rank-'+rank : ''}">${rankIcon}</div>
+              <div>
+                <div class="lb-name">${u.name} ${isMe ? '<span class="badge badge-gold">أنت</span>' : ''}</div>
+                <div class="lb-sub">صح تماماً: ${u.exact_count || 0} | نتيجة صح: ${u.result_count || 0}</div>
+              </div>
+              <div>
+                <div class="lb-pts">${u.total_points || u.points || 0}</div>
+                <div class="lb-pts-label">نقطة</div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  } catch(e) { el.innerHTML = `<div class="empty-state"><p>${e.message}</p></div>`; }
+}
+
+// ─── LEAGUES ─────────────────────────────────────────────────────────────────
+async function loadLeagues() {
+  const el = document.getElementById('leaguesContent');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+  try {
+    const leagues = await api('/api/leagues/my');
+    if (!leagues.length) {
+      el.innerHTML = '<div class="empty-state"><div class="icon">👥</div><p>مافيش ليجات لسه. أنشئ ليجا أو انضم لواحدة!</p></div>';
+      return;
+    }
+    el.innerHTML = leagues.map(l => `
+      <div class="league-card" onclick="showLeagueStandings('${l.id}')">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div class="league-name">${l.name}</div>
+          ${l.is_owner ? '<span class="badge badge-gold">مؤسس</span>' : ''}
+        </div>
+        <div class="league-code" onclick="copyCode('${l.invite_code}',event)">
+          🔗 كود الدعوة: ${l.invite_code} <span style="font-size:11px;color:var(--text2)">📋</span>
+        </div>
+        <div class="league-meta">👥 ${l.member_count} عضو</div>
+      </div>
+    `).join('');
+  } catch(e) { el.innerHTML = `<div class="empty-state"><p>${e.message}</p></div>`; }
+}
+
+async function showLeagueStandings(leagueId) {
+  try {
+    const data = await api(`/api/leagues/${leagueId}/standings`);
+    showModal(`
+      <h3>🏆 ${data.league.name}</h3>
+      <div class="league-code" onclick="copyCode('${data.league.invite_code}',event)" style="margin-bottom:16px">
+        🔗 كود الدعوة: ${data.league.invite_code}
+      </div>
+      <div class="lb-card">
+        ${data.standings.map((u, i) => {
+          const rank = i + 1;
+          const isMe = u.id === currentUser.id;
+          const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+          return `
+            <div class="lb-row ${isMe ? 'me' : ''}">
+              <div class="lb-rank ${rank<=3?'rank-'+rank:''}">${rankIcon}</div>
+              <div><div class="lb-name">${u.name} ${isMe?'<span class="badge badge-gold">أنت</span>':''}</div></div>
+              <div><div class="lb-pts">${u.total_points}</div><div class="lb-pts-label">نقطة</div></div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal()">إغلاق</button>
+      </div>
+    `);
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+function copyCode(code, e) {
+  e.stopPropagation();
+  navigator.clipboard.writeText(code).then(() => showToast('✅ تم نسخ الكود: ' + code, 'success'));
+}
+
+function showCreateLeague() {
+  showModal(`
+    <h3>➕ إنشاء ليجا جديدة</h3>
+    <div class="form-group">
+      <label>اسم الليجا</label>
+      <input type="text" id="leagueName" class="form-group input" style="width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--text);font-size:15px;outline:none" placeholder="مثلاً: أصحاب الشغل">
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
+      <button class="btn-primary" style="flex:1" onclick="createLeague()">إنشاء ✨</button>
+    </div>
+  `);
+}
+
+async function createLeague() {
+  const name = document.getElementById('leagueName').value.trim();
+  if (!name) { showToast('ادخل اسم الليجا', 'error'); return; }
+  try {
+    const r = await api('/api/leagues', 'POST', { name });
+    showToast(`✅ تم إنشاء الليجا! كود الدعوة: ${r.invite_code}`, 'success');
+    closeModal();
+    loadLeagues();
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+function showJoinLeague() {
+  showModal(`
+    <h3>🔗 انضم لليجا</h3>
+    <div class="form-group">
+      <label>كود الدعوة</label>
+      <input type="text" id="leagueCode" style="width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--text);font-size:15px;outline:none;text-transform:uppercase" placeholder="مثلاً: ABC123" oninput="this.value=this.value.toUpperCase()">
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
+      <button class="btn-primary" style="flex:1" onclick="joinLeague()">انضم 🚀</button>
+    </div>
+  `);
+}
+
+async function joinLeague() {
+  const code = document.getElementById('leagueCode').value.trim();
+  if (!code) { showToast('ادخل كود الدعوة', 'error'); return; }
+  try {
+    await api('/api/leagues/join', 'POST', { invite_code: code });
+    showToast('✅ تم الانضمام للليجا!', 'success');
+    closeModal();
+    loadLeagues();
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+// ─── ADMIN ───────────────────────────────────────────────────────────────────
+async function loadAdmin() {
+  if (!currentUser.is_admin) {
+    document.getElementById('page-admin').innerHTML = `
+      <div class="container">
+        <div class="admin-section">
+          <h3>تفعيل صلاحيات الإدارة</h3>
+          <div class="match-result-form">
+            <input type="password" class="input-sm" id="adminSecret" placeholder="كلمة السر السرية">
+            <button class="btn-primary" style="width:auto;padding:12px 24px" onclick="makeAdmin()">تفعيل</button>
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Populate match selects
+  const matchOpts = allMatches.map(m => `<option value="${m.id}">${m.home_flag||''}${m.home_name_ar||m.home_name} vs ${m.away_flag||''}${m.away_name_ar||m.away_name} (R${m.round})</option>`).join('');
+  document.getElementById('adminMatchSelect').innerHTML = matchOpts;
+  document.getElementById('adminMatchStatus').innerHTML = matchOpts;
+
+  const teamOpts = allTeams.map(t => `<option value="${t.id}">${t.flag} ${t.name_ar}</option>`).join('');
+  document.getElementById('adminChampionTeam').innerHTML = teamOpts;
+
+  // Load users
+  try {
+    const users = await api('/api/admin/users');
+    const el = document.getElementById('adminUsers');
+    el.innerHTML = `<table style="width:100%;border-collapse:collapse">
+      <tr style="color:var(--text2);font-size:13px;border-bottom:1px solid var(--border)">
+        <th style="padding:8px;text-align:right">الاسم</th>
+        <th style="padding:8px;text-align:right">البريد</th>
+        <th style="padding:8px;text-align:center">مفعّل</th>
+        <th style="padding:8px;text-align:right">التاريخ</th>
+      </tr>
+      ${users.map(u => `
+        <tr style="border-bottom:1px solid var(--border);font-size:14px">
+          <td style="padding:10px 8px">${u.name}</td>
+          <td style="padding:10px 8px;color:var(--text2)">${u.email}</td>
+          <td style="padding:10px 8px;text-align:center">${u.is_active ? '✅' : '❌'}</td>
+          <td style="padding:10px 8px;color:var(--text2);font-size:12px">${u.created_at?.substring(0,10)||''}</td>
+        </tr>
+      `).join('')}
+    </table>`;
+  } catch(e) {}
+}
+
+async function adminUpdateResult() {
+  const match_id = document.getElementById('adminMatchSelect').value;
+  const home_score = parseInt(document.getElementById('adminHomeScore').value);
+  const away_score = parseInt(document.getElementById('adminAwayScore').value);
+  try {
+    await api('/api/admin/match-result', 'POST', { match_id, home_score, away_score });
+    showToast('✅ تم تحديث النتيجة وحساب النقاط', 'success');
+    await loadInitialData();
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+async function adminSetChampion() {
+  const team_id = document.getElementById('adminChampionTeam').value;
+  try {
+    await api('/api/admin/champion-result', 'POST', { team_id });
+    showToast('✅ تم تحديث توقعات البطل', 'success');
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+async function adminUpdateStatus() {
+  const match_id = document.getElementById('adminMatchStatus').value;
+  const status = document.getElementById('adminStatusValue').value;
+  try {
+    await api(`/api/admin/match/${match_id}/status`, 'PATCH', { status });
+    showToast('✅ تم تحديث حالة الماتش', 'success');
+    await loadInitialData();
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+async function makeAdmin() {
+  const secret = document.getElementById('adminSecret').value;
+  try {
+    await api('/api/admin/make-admin', 'POST', { secret });
+    showToast('✅ تم ترقيتك لمدير! أعد تسجيل الدخول', 'success');
+    localStorage.setItem('wc2026_user', JSON.stringify({ ...currentUser, is_admin: 1 }));
+    currentUser.is_admin = 1;
+    document.getElementById('adminNavLink').style.display = '';
+    loadAdmin();
+  } catch(e) { showToast(e.message, 'error'); }
+}
+
+// ─── UTILS ───────────────────────────────────────────────────────────────────
+async function api(path, method = 'GET', body = null) {
+  const opts = { method, headers: { 'Content-Type': 'application/json' } };
+  const token = localStorage.getItem('wc2026_token');
+  if (token) opts.headers['Authorization'] = `Bearer ${token}`;
+  if (body) opts.body = JSON.stringify(body);
+  const r = await fetch(API + path, opts);
+  const data = await r.json();
+  if (!r.ok) {
+    const err = new Error(data.error || 'خطأ في الطلب');
+    err.need_activation = data.need_activation;
+    throw err;
+  }
+  return data;
+}
+
+function showErr(el, msg) { el.style.display = ''; el.textContent = msg; }
+
+function showToast(msg, type = 'info') {
+  const wrap = document.getElementById('toastWrap');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  wrap.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+function showModal(html) {
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modal').style.display = 'flex';
+}
+function closeModal() { document.getElementById('modal').style.display = 'none'; }
+document.getElementById('modal').onclick = e => { if (e.target === document.getElementById('modal')) closeModal(); };
+</script>
+</body>
+</html>
